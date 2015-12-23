@@ -11,11 +11,13 @@ java_import org.elasticsearch.index.query.QueryStringQueryBuilder
 require 'sinatra/base'
 require 'json'
 
-#node = NodeBuilder.nodeBuilder().local(true).node();
-node = NodeBuilder.nodeBuilder().node();
-$client = node.client();
+$node = NodeBuilder.nodeBuilder().node();
+$client = $node.client();
 
 class App < Sinatra::Base
+  configure do
+  end
+
   get '/:index/:type' do
     index = @params['index']
     type = @params['type']

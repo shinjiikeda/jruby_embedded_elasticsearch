@@ -18,11 +18,14 @@ dependencies {
      * dependencies our JRubyExec-based tasks will need
      */
     jrubyExec "rubygems:sinatra:1.4.6+"
+    jrubyExec "rubygems:puma:2.15.3+"
     jrubyExec 'org.elasticsearch:elasticsearch:1.6.2'
 }
 
 task run(type: JRubyExec) {
-    script "${projectDir}/scripts/app.rb"
+    script "puma"
+    scriptArgs "-C", "config.rb", "${projectDir}/scripts/app.rb"
     environment 'RUBYLIB' : "./scripts"
+    maxHeapSize "2G"
 }
 

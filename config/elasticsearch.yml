@@ -3,8 +3,6 @@
 
 cluster.name: test
 
-node.name: client
-
 node.master: true
 node.data: true
 

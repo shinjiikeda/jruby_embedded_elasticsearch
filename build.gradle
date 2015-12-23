@@ -1,0 +1,28 @@
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "com.github.jruby-gradle:jruby-gradle-plugin:1.2.0"
+  }
+}
+
+apply plugin: "com.github.jruby-gradle.base"
+
+import com.github.jrubygradle.JRubyExec
+
+dependencies {
+    /* Using the built-in `jrubyExec` configuration to describe the
+     * dependencies our JRubyExec-based tasks will need
+     */
+    jrubyExec "rubygems:sinatra:1.4.6+"
+    jrubyExec 'org.elasticsearch:elasticsearch:1.6.2'
+}
+
+task run(type: JRubyExec) {
+    script "${projectDir}/scripts/app.rb"
+    environment 'RUBYLIB' : "./scripts"
+}
+

@@ -1,0 +1,13 @@
+
+# <http://elasticsearch.org/guide/en/elasticsearch/reference/current/setup-configuration.html>
+
+cluster.name: test
+
+node.name: client
+
+node.master: true
+node.data: true
+
+discovery.zen.ping.multicast.enabled: false
+discovery.zen.ping.unicast.hosts: ["localhost"]
+

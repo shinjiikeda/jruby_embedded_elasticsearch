@@ -1,7 +1,7 @@
 #!/usr/bin/env puma
 
-environment 'production'
-#environment 'development'
+environment 'development'
+#environment 'production'
 
-threads 8, 16
+threads 0, 16
 
